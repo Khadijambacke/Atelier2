@@ -70,16 +70,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: Colors.black, width: 4),
                 ),
+
                 contentPadding: EdgeInsets.zero,
               ),
             ),
           ),
-
-          Icon(
-            //const Icon (Icons.light_mode)
-            isDark ? Icons.dark_mode : Icons.light_mode,
-          ),
+          const SizedBox(height: 50),
+          Icon(isDark ? Icons.dark_mode : Icons.light_mode),
           Switch(
             ///le theme est capte au niveau de isDark
             value: isDark,
@@ -105,32 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 50),
-            Container(
-              width: 300.0,
-              margin: EdgeInsets.only(left: 600.0),
-              child: TextField(
-                //:pour preparer la saisie
-                keyboardType: TextInputType.text,
-                // obscureText: true,: pour cacher instatenement le texte saisieRR
-                //pour limiter
-                maxLength: 20,
-                controller: _controller, // Associe le controller à ce TextField
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 8.0,
-                    horizontal: 10.0,
-                  ),
-                  //labelText: 'Entrez votre texte',
-                  hintText: 'Rechercher un café...',
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10.0),
-                    ), // Coins arrondis
-                  ),
-                ),
-              ),
-            ),
+
             const SizedBox(height: 280),
             CtaButton(),
           ],
