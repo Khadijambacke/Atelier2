@@ -57,9 +57,25 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("COFFE SHOP"),
-
         ////mon toggle
+        //////actions[ensemble des widget qui s'affiche a droite dans appbar
         actions: [
+          Container(
+            width: 200,
+            margin: EdgeInsets.symmetric(vertical: 8),
+            child: TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                hintText: "Rechercher...",
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                contentPadding: EdgeInsets.zero,
+              ),
+            ),
+          ),
+
           Icon(
             //const Icon (Icons.light_mode)
             isDark ? Icons.dark_mode : Icons.light_mode,
