@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'theme/app_theme.dart';
 import 'widgets/cta_section.dart';
+import 'widgets/hero_section.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +29,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      /// enlever le debug en haut
+      debugShowCheckedModeBanner: false,
       title: 'COFFE-Najma',
 
       theme: AppTheme.lightTheme,
@@ -98,16 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              "Theme changer ",
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const SizedBox(height: 50),
-
-            const SizedBox(height: 280),
-            CtaButton(),
-          ],
+          children: [HeroSection(), const SizedBox(height: 50)],
         ),
       ),
     );

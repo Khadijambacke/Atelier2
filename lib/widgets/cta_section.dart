@@ -18,7 +18,7 @@ class _CtaButtonState extends State<CtaButton> {
           counter++;
         });
       },
-      child: Text("Ajoutee: $counter"),
+      child: Text("Commander !: $counter"),
     );
   }
 }
