@@ -10,6 +10,7 @@ class AppTheme {
     primaryColor: const Color.fromARGB(255, 36, 4, 4),
     colorScheme: ColorScheme.fromSeed(
       seedColor: const Color.fromARGB(255, 121, 85, 72),
+
       brightness: Brightness.light,
     ),
     primarySwatch: Colors.brown,

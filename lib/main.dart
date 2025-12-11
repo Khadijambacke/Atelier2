@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'theme/app_theme.dart';
-import 'widgets/cta_section.dart';
+//import 'widgets/cta_section.dart';
 import 'widgets/hero_section.dart';
+import 'widgets/features_sections.dart';
 
 void main() {
   runApp(const MyApp());
@@ -98,10 +99,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ////bouton recherche
       ),
 
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [HeroSection(), const SizedBox(height: 50)],
+          children: [
+            HeroSection(),
+            const SizedBox(height: 10),
+            FeaturesSection(),
+          ],
         ),
       ),
     );
