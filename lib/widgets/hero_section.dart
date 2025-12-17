@@ -11,12 +11,10 @@ class HeroSection extends StatelessWidget {
         color: const Color.fromARGB(255, 197, 72, 26),
         alignment: Alignment(2, -1),
 
-        // fond doux café
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            // Colonne pour les textes
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
@@ -37,7 +35,7 @@ class HeroSection extends StatelessWidget {
                     fontSize: 12,
                   ),
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 25),
                 Center(child: CtaButton()),
               ],
             ),

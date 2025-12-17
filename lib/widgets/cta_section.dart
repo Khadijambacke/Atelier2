@@ -9,7 +9,6 @@ class CtaButton extends StatefulWidget {
 
 class _CtaButtonState extends State<CtaButton> {
   int counter = 0;
-
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(

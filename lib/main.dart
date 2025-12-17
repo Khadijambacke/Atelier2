@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'theme/app_theme.dart';
-//import 'widgets/cta_section.dart';
+import 'widgets/cta_section.dart';
 import 'widgets/hero_section.dart';
 import 'widgets/features_sections.dart';
+import 'widgets/footer.dart';
+import 'package:flutter_social_button/flutter_social_button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -60,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("COFFE SHOP"),
+        title: const Text("Najma "),
         ////mon toggle
         //////actions[ensemble des widget qui s'affiche a droite dans appbar
         actions: [
@@ -106,9 +108,38 @@ class _MyHomePageState extends State<MyHomePage> {
             HeroSection(),
             const SizedBox(height: 10),
             FeaturesSection(),
+            const SizedBox(height: 25),
+            //const Footer(),
+            Center(child: CtaButton()),
+            const SizedBox(height: 8),
+            FooterSection(),
+
+            //SocialButton.linkedinButton(onTap: () {}),
           ],
         ),
       ),
+
+      // bottomNavigationBar: Container(
+      //   height: 50,
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: [
+      //       IconButton(
+      //         icon: Icon(FontAwesomeIcons.facebook),
+      //         onPressed: () {}, // <-- juste vide pour éviter l’erreur
+      //       ),
+      //       IconButton(icon: Icon(FontAwesomeIcons.twitter), onPressed: () {}),
+      //       IconButton(
+      //         icon: Icon(FontAwesomeIcons.instagram),
+      //         onPressed: () {},
+      //       ),
+      //       IconButton(
+      //         icon: Icon(FontAwesomeIcons.pinterest),
+      //         onPressed: () {},
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }
