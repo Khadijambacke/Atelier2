@@ -12,17 +12,17 @@ class FooterSection extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _socialIcon(FontAwesomeIcons.instagram),
-          _socialIcon(FontAwesomeIcons.facebook),
-          _socialIcon(FontAwesomeIcons.twitter),
-          _socialIcon(FontAwesomeIcons.linkedin),
-          _socialIcon(FontAwesomeIcons.github),
+          socialIcon(FontAwesomeIcons.instagram),
+          socialIcon(FontAwesomeIcons.facebook),
+          socialIcon(FontAwesomeIcons.twitter),
+          socialIcon(FontAwesomeIcons.linkedin),
+          socialIcon(FontAwesomeIcons.github),
         ],
       ),
     );
   }
 
-  Widget _socialIcon(IconData icon) {
+  Widget socialIcon(IconData icon) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: IconButton(

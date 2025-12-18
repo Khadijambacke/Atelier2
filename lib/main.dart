@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Najma "),
-        ////mon toggle
+
         //////actions[ensemble des widget qui s'affiche a droite dans appbar
         actions: [
           Container(
@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Switch(
             ///le theme est capte au niveau de isDark
             value: isDark,
-            //on click la valueur change
+
             onChanged: (value) {
               setState(() {
                 //isDark recoit la nouvelle valeur:soit true,soit false
@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
             HeroSection(),
             const SizedBox(height: 10),
             FeaturesSection(),
-            const SizedBox(height: 25),
+            const SizedBox(height: 35),
             //const Footer(),
             Center(child: CtaButton()),
             const SizedBox(height: 8),

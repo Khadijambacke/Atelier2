@@ -2,62 +2,130 @@ import 'package:flutter/material.dart';
 
 class FeaturesSection extends StatelessWidget {
   const FeaturesSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).colorScheme.primary,
       padding: const EdgeInsets.all(12),
-      //padding: const EdgeInsets.all(16),
       child: GridView.count(
         shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(), // évite un double scroll
-        crossAxisCount: 2, //
+        physics: const NeverScrollableScrollPhysics(),
+        crossAxisCount: 3,
         crossAxisSpacing: 10,
-        mainAxisSpacing: 16,
+        mainAxisSpacing: 12,
+        childAspectRatio: 1.8, // contrôle la taille de la Card
         children: [
           buildFeature(
             "assets/images/cafe1.png",
-            "EXpresso cafe ",
+            "Expresso Cafe",
+            "7500",
             Icons.coffee,
-          ),
-          buildFeature("assets/images/cafe2.png", "Calm coffe ", Icons.eco),
-          buildFeature(
-            "assets/images/cafe3.png",
-            "Cafe Chocolat",
-            Icons.shopping_cart,
           ),
           buildFeature(
             "assets/images/cafe2.png",
-            "Caffe latte ",
+            "Calm Coffee",
+            "6000",
+            Icons.eco,
+          ),
+          buildFeature(
+            "assets/images/cafe3.png",
+            "Cafe Chocolat",
+            "2000",
             Icons.shopping_cart,
+          ),
+          buildFeature(
+            "assets/images/cafe4.png",
+            "Caffe Latte",
+            "3500",
+            Icons.coffee,
+          ),
+          buildFeature(
+            "assets/images/cafe5.png",
+            "Caffe Latte",
+            "3500",
+            Icons.coffee,
+          ),
+          buildFeature(
+            "assets/images/cafe8.png",
+            "Caffe Latte",
+            "3500",
+            Icons.coffee,
+          ),
+          buildFeature(
+            "assets/images/cafe7.png",
+            "Caffe Latte",
+            "3500",
+            Icons.coffee,
+          ),
+          buildFeature(
+            "assets/images/cafe6.png",
+            "Caffe Latte",
+            "3500",
+            Icons.coffee,
+          ),
+          buildFeature(
+            "assets/images/cafe9.png",
+            "Caffe Latte",
+            "3500",
+            Icons.coffee,
           ),
         ],
       ),
     );
   }
 
-  Widget buildFeature(String imagePath, String text, IconData icon) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Image.asset(imagePath, height: 110, width: 90, fit: BoxFit.contain),
-        const SizedBox(height: 6),
-        Icon(icon, size: 28, color: Colors.brown),
+  Widget buildFeature(
+    String imagePath,
+    String text,
+    String prix,
+    IconData icon,
+  ) {
+    return Card(
+      elevation: 3,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            // Image en haut
+            Image.asset(imagePath, height: 90, width: 90, fit: BoxFit.contain),
+            const SizedBox(height: 8),
 
-        const SizedBox(height: 5),
+            // Ligne horizontale : icône + prix
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon, size: 22, color: Colors.brown),
+                const SizedBox(width: 6),
+                Text(
+                  "$prix F",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Colors.black87,
+                  ),
+                ),
+              ],
+            ),
 
-        Text(
-          text,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            color: Colors.white,
-          ),
-          softWrap: true,
-          textAlign: TextAlign.center,
-          maxLines: 3,
+            const SizedBox(height: 6),
+
+            // Texte du produit en dessous
+            Text(
+              text,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: Colors.black87,
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 2,
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
