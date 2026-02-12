@@ -4,7 +4,10 @@ import 'widgets/cta_section.dart';
 import 'widgets/hero_section.dart';
 import 'widgets/features_sections.dart';
 import 'widgets/footer.dart';
-import 'package:flutter_social_button/flutter_social_button.dart';
+import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
+import 'features/auth/presentation/login_page.dart';
+import 'features/auth/state/auth_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +21,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ThemeMode _mode = ThemeMode.system;
+  ThemeMode _mode = ThemeMode.light;
   var conteur = 0;
 
   // Fonction appelée lorsqu'on change le toggle
@@ -31,16 +34,44 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      /// enlever le debug en haut
-      debugShowCheckedModeBanner: false,
-      title: 'COFFE-Najma',
+    return ChangeNotifierProvider(
+      create: (_) => AuthProvider(),
+      child: Builder(
+        builder: (context) {
+          final auth = context.watch<AuthProvider>();
 
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: _mode,
+          final router = GoRouter(
+            initialLocation: '/catalog',
 
-      home: MyHomePage(onThemeChanged: changeTheme),
+            redirect: (context, state) {
+              if (!auth.isLoggedIn) {
+                return '/login';
+              }
+              return null;
+            },
+
+            routes: [
+              GoRoute(
+                path: '/login',
+                builder: (context, state) => const LoginPage(),
+              ),
+              GoRoute(
+                path: '/catalog',
+                builder: (context, state) =>
+                    MyHomePage(onThemeChanged: changeTheme),
+              ),
+            ],
+          );
+
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: _mode,
+            routerConfig: router,
+          );
+        },
+      ),
     );
   }
 }
@@ -55,91 +86,54 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isDark = false;
   final TextEditingController _controller = TextEditingController();
+
+  bool get isDark => Theme.of(context).brightness == Brightness.dark;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Najma "),
-
-        //////actions[ensemble des widget qui s'affiche a droite dans appbar
         actions: [
           Container(
             width: 200,
-            margin: EdgeInsets.symmetric(vertical: 8),
+            margin: const EdgeInsets.symmetric(vertical: 8),
             child: TextField(
               controller: _controller,
               decoration: InputDecoration(
                 hintText: "Rechercher...",
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.black, width: 4),
                 ),
-
                 contentPadding: EdgeInsets.zero,
               ),
             ),
           ),
-          const SizedBox(height: 50),
+          const SizedBox(width: 10),
           Icon(isDark ? Icons.dark_mode : Icons.light_mode),
           Switch(
-            ///le theme est capte au niveau de isDark
             value: isDark,
-
             onChanged: (value) {
-              setState(() {
-                //isDark recoit la nouvelle valeur:soit true,soit false
-                isDark = value;
-              });
               widget.onThemeChanged(value);
             },
           ),
         ],
-        ////bouton recherche
       ),
-
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             HeroSection(),
             const SizedBox(height: 10),
             FeaturesSection(),
-            const SizedBox(height: 35),
-            //const Footer(),
+            const SizedBox(height: 25),
             Center(child: CtaButton()),
             const SizedBox(height: 8),
             FooterSection(),
-
-            //SocialButton.linkedinButton(onTap: () {}),
           ],
         ),
       ),
-
-      // bottomNavigationBar: Container(
-      //   height: 50,
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //     children: [
-      //       IconButton(
-      //         icon: Icon(FontAwesomeIcons.facebook),
-      //         onPressed: () {}, // <-- juste vide pour éviter l’erreur
-      //       ),
-      //       IconButton(icon: Icon(FontAwesomeIcons.twitter), onPressed: () {}),
-      //       IconButton(
-      //         icon: Icon(FontAwesomeIcons.instagram),
-      //         onPressed: () {},
-      //       ),
-      //       IconButton(
-      //         icon: Icon(FontAwesomeIcons.pinterest),
-      //         onPressed: () {},
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

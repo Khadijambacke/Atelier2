@@ -14,7 +14,7 @@ class FeaturesSection extends StatelessWidget {
         crossAxisCount: 3,
         crossAxisSpacing: 10,
         mainAxisSpacing: 12,
-        childAspectRatio: 1.8, // contrôle la taille de la Card
+        childAspectRatio: 0.6, // contrôle la taille de la Card
         children: [
           buildFeature(
             "assets/images/cafe1.png",
@@ -36,38 +36,38 @@ class FeaturesSection extends StatelessWidget {
           ),
           buildFeature(
             "assets/images/cafe4.png",
-            "Caffe Latte",
-            "3500",
+            "Caffe latte miel",
+            "2500",
             Icons.coffee,
           ),
           buildFeature(
             "assets/images/cafe5.png",
             "Caffe Latte",
-            "3500",
+            "300",
             Icons.coffee,
           ),
           buildFeature(
             "assets/images/cafe8.png",
-            "Caffe Latte",
+            "Calm coffe",
             "3500",
             Icons.coffee,
           ),
           buildFeature(
             "assets/images/cafe7.png",
-            "Caffe Latte",
+            "Caffe  basique",
             "3500",
             Icons.coffee,
           ),
           buildFeature(
             "assets/images/cafe6.png",
-            "Caffe Latte",
-            "3500",
+            "Caffe matcha",
+            "6000",
             Icons.coffee,
           ),
           buildFeature(
             "assets/images/cafe9.png",
-            "Caffe Latte",
-            "3500",
+            "Caffe oreo",
+            "4500",
             Icons.coffee,
           ),
         ],
