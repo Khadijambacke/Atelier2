@@ -24,10 +24,8 @@ class _MyAppState extends State<MyApp> {
   ThemeMode _mode = ThemeMode.light;
   var conteur = 0;
 
-  // Fonction appelée lorsqu'on change le toggle
   void changeTheme(bool isDark) {
     setState(() {
-      //on execute les themes predefinie sur app_theme.dart dependant de la valeur de isDark
       _mode = isDark ? ThemeMode.dark : ThemeMode.light;
     });
   }
